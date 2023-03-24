@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MVVM_Template</string>
+    <string name="text">Update Text</string>
+</resources>
