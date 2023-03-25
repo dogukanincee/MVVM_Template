@@ -1,6 +1,8 @@
 package com.dogukanincee.mvvm_template
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.dogukanincee.mvvm_template.view.MainActivity
+import com.dogukanincee.mvvm_template.view_model.ViewModel
 import io.mockk.spyk
 import org.junit.Before
 import org.junit.Rule

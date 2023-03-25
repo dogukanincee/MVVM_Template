@@ -1,6 +1,7 @@
 package com.dogukanincee.mvvm_template
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.dogukanincee.mvvm_template.view_model.ViewModel
 import io.mockk.spyk
 import org.junit.Assert.assertEquals
 import org.junit.Before

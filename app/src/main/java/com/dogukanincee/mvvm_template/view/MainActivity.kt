@@ -1,4 +1,4 @@
-package com.dogukanincee.mvvm_template
+package com.dogukanincee.mvvm_template.view
 
 import android.os.Bundle
 import android.util.Log
@@ -6,6 +6,8 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.dogukanincee.mvvm_template.R
+import com.dogukanincee.mvvm_template.view_model.ViewModel
 import kotlin.random.Random
 
 /**
@@ -36,7 +38,7 @@ class MainActivity : AppCompatActivity() {
 
         // Observe the LiveData variable and update the messageTextView when it changes
         viewModel.message.observe(this) { message ->
-            messageTextView.text = message
+            messageTextView.text = message.text
         }
     }
 
