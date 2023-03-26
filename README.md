@@ -1,5 +1,9 @@
 # Implementing the MVVM Architecture in Android with Kotlin: A Guide to Model, View and ViewModel Classes
 
+https://dogukanincee.medium.com/implementing-the-mvvm-architecture-in-android-a-guide-to-model-view-and-viewmodel-classes-dbcb72f07337
+
+https://dogukanincee.medium.com/unit-testing-in-android-a-guide-of-using-junit-mockito-mockk-and-espresso-d7a47819ada5
+
 The Model-View-ViewModel (MVVM) architecture is a popular Android application development design pattern. It divides an application into three layers: View, ViewModel, and Model.
 
 To gain a deeper comprehension of the MVVM architecture, we will examine the Kotlin-written MainActivity, Message, and ViewModel classes of an Android application in this article.
