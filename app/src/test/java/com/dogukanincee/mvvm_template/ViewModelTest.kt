@@ -1,9 +1,12 @@
 package com.dogukanincee.mvvm_template
 
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.dogukanincee.mvvm_template.model.Message
 import com.dogukanincee.mvvm_template.view_model.ViewModel
+import io.mockk.spyk
 import org.junit.Assert.assertEquals
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
@@ -21,6 +24,11 @@ class ViewModelTest {
      */
     private lateinit var viewModel: ViewModel
 
+    /**
+     * The [InstantTaskExecutorRule] to ensure that the LiveData updates instantly.
+     */
+    @get:Rule
+    val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     /**
      * A mocked [Message] object to be used in tests.
@@ -33,7 +41,7 @@ class ViewModelTest {
      */
     @Before
     fun setUp() {
-        viewModel = ViewModel()
+        viewModel = spyk(ViewModel())
     }
 
     /**

@@ -3,25 +3,24 @@ package com.dogukanincee.mvvm_template
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.dogukanincee.mvvm_template.view.MainActivity
 import com.dogukanincee.mvvm_template.view_model.ViewModel
-import io.mockk.spyk
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.junit.runner.RunWith
-import org.mockito.junit.MockitoJUnitRunner
+import org.mockito.Mock
+import org.mockito.MockitoAnnotations
 
 /**
- * Test class for the [MockitoJUnitRunner] class.
+ * Test class for the [MainActivity] class.
  */
-@RunWith(MockitoJUnitRunner::class)
 class MainActivityTest {
 
     /**
      * The [ViewModel] instance to be tested.
      */
-    private lateinit var viewModel: ViewModel
+    @Mock
+    lateinit var viewModel: ViewModel
 
     /**
      * The [InstantTaskExecutorRule] to ensure that the LiveData updates instantly.
@@ -34,7 +33,8 @@ class MainActivityTest {
      */
     @Before
     fun setUp() {
-        viewModel = spyk(ViewModel())
+        MockitoAnnotations.initMocks(this)
+        viewModel = ViewModel()
     }
 
     /**
