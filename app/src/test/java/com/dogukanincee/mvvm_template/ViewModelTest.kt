@@ -1,13 +1,13 @@
 package com.dogukanincee.mvvm_template
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.dogukanincee.mvvm_template.model.Message
 import com.dogukanincee.mvvm_template.view_model.ViewModel
-import io.mockk.spyk
 import org.junit.Assert.assertEquals
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.mockito.Mock
+import org.mockito.Mockito.`when`
 import org.mockito.junit.MockitoJUnitRunner
 
 /**
@@ -21,30 +21,68 @@ class ViewModelTest {
      */
     private lateinit var viewModel: ViewModel
 
+
     /**
-     * The [InstantTaskExecutorRule] to ensure that the LiveData updates instantly.
+     * A mocked [Message] object to be used in tests.
      */
-    @get:Rule
-    val instantTaskExecutorRule = InstantTaskExecutorRule()
+    @Mock
+    lateinit var mockMessage: Message
 
     /**
      * Sets up the [viewModel] instance for the test.
      */
     @Before
     fun setUp() {
-        viewModel = spyk(ViewModel())
+        viewModel = ViewModel()
     }
 
     /**
-     * Tests the [ViewModel.setMessage] function.
+     * Tests the [ViewModel.setMessage] function when the message is not empty.
      */
     @Test
-    fun test_setMessage_setsMessageValue() {
-        // Given
-        val message = "Test message"
-        // When
+    fun `test set message with non-empty text`() {
+        val message = "Hello, World!"
         viewModel.setMessage(message)
-        // Then
-        assertEquals(message, viewModel.message.value)
+        assertEquals(message, viewModel.message.value?.text)
+    }
+
+    /**
+     * Tests the [ViewModel.setMessage] function when the message is empty.
+     */
+    @Test
+    fun `test set message with empty text`() {
+        val message = ""
+        viewModel.setMessage(message)
+        assertEquals(message, viewModel.message.value?.text)
+    }
+
+    /**
+     * Tests the [ViewModel.setMessage] function when the message is not null and not empty.
+     */
+    @Test
+    fun `test set message with non-null and non-empty text`() {
+        val message = "Hello world!"
+        viewModel.setMessage(message)
+        assertEquals(message, viewModel.message.value?.text)
+    }
+
+    /**
+     * Tests the [ViewModel.setMessage] function with a mocked [Message] object that throws an exception.
+     */
+    @Test(expected = Exception::class)
+    fun `test set message with mocked Message object that throws an exception`() {
+        `when`(mockMessage.text).thenThrow(Exception())
+        viewModel.setMessage(mockMessage.text)
+    }
+
+    /**
+     * Test case for verifying that the ViewModel updates the message correctly.
+     */
+    @Test
+    fun `test ViewModel updates message`() {
+        val viewModel = ViewModel()
+        val message = "Hello World"
+        viewModel.setMessage(message)
+        assertEquals(message, viewModel.message.value!!.text)
     }
 }
